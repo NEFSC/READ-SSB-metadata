@@ -20,6 +20,8 @@ DAS2 can be found in the NEFSC_GARFO schema, the relevant tables are prefixed wi
     + I think these guidelines are okay for other species, but I'm not positive.    
 + In general, there are (BASE) Allocations, base allocation adjustments, carryover, Leases (in and out), transfers, and sanctions.
 
++ There are a AMS_TRIP, AMS_TRIP_AND_CHARGE, and AMS_TRIP_LANDING contain trip, landings, and charges associated with AMS. There is a bit of Golden Tilefish data there, but it is not complete.
+
 AMS stores transfers in a funky way:
 The allocation_transfer table has a different structure than the ams.allocation_tx table. The column is called allocation number,and the value may be an MRI. That is because GC scallop has MRI's but tilefish does not, It uses allocation numbers. They serve the same purpose, which is to uniquely identify an access privilege, whether it is an MRI or allocation number. The from/to tells what allocation number the pounds came from or to. If the amount is positive, the from/to column contains the allocation number that bought the pounds. If the amount is negative the from/to column contains the allocation number that sold them. In AMS, there are two rows, one for the seller and one for the buyer. . They each have columns called "root_mri" and "charge_mri" - which is misleading because the tilfish entries are not MRI's [Steve Cohen @ GARFO. April, 2016]
 
