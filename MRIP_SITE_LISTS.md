@@ -23,6 +23,9 @@ South:
 
 
 ## MRIP_COD_ALL_SITE_LIST
+Scott assigned many/most of the statistical areas for the SNE sites.  
+
+Brian Linton  finished assigning stat areas (NMFS_STAT_AREA) for the SNE intercept sites that Scott wasn't able to get to before he left.  There were a handful of unidentified sites that did not have any location information associated with them.  In those cases, Brian assigned stat areas based on the stat areas of sites with adjacent site ID numbers (INTSITE) and known locations.  This is the approach that Scott recommended, when we discussed the issue.  In general, those unidentifed sites only had one or two angler interviews each, and those interviews were from the 80s and 90s.
 
 
 # Current Collection Methods
