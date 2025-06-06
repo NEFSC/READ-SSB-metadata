@@ -1,12 +1,14 @@
 # Overview
 Tables: 
 
-* MRIP_MA_SITE_LIST
-
+* MRIP_MA_SITE_LIST  : Assign Massachusetts MRIP sites to either North (GOM) or South (GB) for purposes of the GOM and GB cod stock assessments.
+* MRIP_COD_ALL_SITE_LIST : Assign *all* MRIP sites to one of the four Cod stocks (WGOM, EGOM, GB, SNE)
 Location: NEFSCDB1
 
 Schema: RECDBS.  Send an email to nmfs.nec.stockeff@noaa.gov to gain access
 
+
+## MRIP_MA_SITE_LIST
 Recreational fishing trips that occur in Massachusetts sometimes must be assigned to the Gulf of Maine or Georges Bank.  Sites are classified as North or South.
 
 North: 
@@ -18,6 +20,10 @@ South:
 
 1. Sites that are South or West of Cape Cod.
 2. Sites on Cape Cod that face South, West, or East into the Vineyard Sound, Buzzards Bay, or Georges Bank.
+
+
+## MRIP_COD_ALL_SITE_LIST
+
 
 # Current Collection Methods
 These sites were compiled by Scott Steinback.
@@ -51,6 +57,16 @@ replace area_s="GBS" if st==25 & strmatch(stock_region_calc,"SOUTH")
 
 ```
 To classify trips into either the Gulf of Maine or Georges Bank.
+
+
+
+
+To get the data from MRIP_COD_ALL_SITE_LIST
+```
+select * from RECDBS.MRIP_COD_ALL_SITE_LIST;
+```
+
+
 
 # Sample Projects
 * Min-Yang uses this to classify trips that target cod/haddock into GOM or GB.
