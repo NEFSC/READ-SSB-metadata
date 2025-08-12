@@ -24,6 +24,8 @@ See the [README](https://github.com/NEFSC/READ-SSB-Lee-metadata/) for a note abo
 
 # General Caveats.
 
+* Total trips spike up in the mid-2000s due to a change in how lobster trips are reported from ACCSP. 
+
 * CAMS currently fills in VALUE=NULL with a zero. This might be a problem if you are calculating average prices by summing the landings and value for all rows.  
   
 ```
