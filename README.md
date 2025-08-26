@@ -11,7 +11,7 @@ See the instructions in the [How to help](https://github.com/NEFSC/READ-SSB-Lee-
 
 # Basics and General Thoughts
 
-1. Most data are stored in **Oracle databases**, which are located on the "NEFSC_USERS" **servers**.  "Nova" was shut down in 2022 and replaced with NEFSC_USERS on NEFSCDB1. Sole is planned to be shut down in January, 2024.
+1. Most data are stored in **Oracle databases**, which are located on the "NEFSC_USERS" **servers**.  "Nova" was shut down in 2022 and replaced with NEFSC_USERS on NEFSCDB1. Sole was shut down in January, 2024.
 
 1. There are various **schema**. Schema are collections of related tables.
 
@@ -33,7 +33,7 @@ This has consequences for reproducibility if you do not store a copy of the data
 
 1.  If you want to use ODBC with R or Stata to read data straight into your software, take a look [here](https://github.com/NEFSC/READ-SSB-Lee-project-template)
 
-1.  It's usually good practice to include the schema when you query data. That is, write:
+1.  It's *usually* good practice to include the schema when you query data. That is, write:
 ```
 select * from nefsc_garfo.permit_vps_owner
 ```
