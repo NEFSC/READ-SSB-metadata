@@ -18,6 +18,20 @@ To get access, ask for it in the [CAMS Jira board](https://apps-st.fisheries.noa
 
 # Changes to Collections Methods
 
+Prior to the cloud migration, public synonyms and TTS were available for CAMS.  
+
+```
+select * from CAMS_LAND
+```
+
+After the cloud migration, you must do this:
+
+```
+select * from CAMS_GARFO.CAMS_LAND
+```
+
+
+
 # Tips and Tricks.
 
 See the [README](https://github.com/NEFSC/READ-SSB-Lee-metadata/) for a note about CAMS and Transportable Table Spaces (TTS).
@@ -27,7 +41,7 @@ See the [README](https://github.com/NEFSC/READ-SSB-Lee-metadata/) for a note abo
 * CAMS currently fills in VALUE=NULL with a zero. This might be a problem if you are calculating average prices by summing the landings and value for all rows.  
   
 ```
-select * from cams_land where value=0 and lndlb>0 and dlr_disp<>101 and itis_tsn='167687' and  status not in ('VTR_NOT_SOLD', 'VTR_DISCARD', 'DLR_ORPHAN_SPECIES') 
+select * from CAMS_GARFO.cams_land where value=0 and lndlb>0 and dlr_disp<>101 and itis_tsn='167687' and  status not in ('VTR_NOT_SOLD', 'VTR_DISCARD', 'DLR_ORPHAN_SPECIES') 
 order by lndlb desc;
  
 select * from nefsc_garfo.cfders_all_years where DEALER_RPT_ID in ('99187778','91840653','97278482','99187792','90695887');
@@ -71,7 +85,7 @@ forvalues yr=$commercial_grab_start(1)$commercial_grab_end {;
 ### From CAMS.
 
 ```
-	odbc load,  exec("select sum(nvl(lndlb,0)) as landings,  sum(livlb) as livelnd, year, month, itis_tsn from cams_land cl where 
+	odbc load,  exec("select sum(nvl(lndlb,0)) as landings,  sum(livlb) as livelnd, year, month, itis_tsn from CAMS_GARFO.cams_land cl where 
 		cl.area between 511 and 515 and 
 		cl.year between $commercial_grab_start and $commercial_grab_end and
 		itis_tsn in ('164712','164744')
@@ -80,7 +94,7 @@ forvalues yr=$commercial_grab_start(1)$commercial_grab_end {;
 
 And discards
 ```
-odbc load,  exec("select year, extract(month from date_trip) as month, itis_tsn, sum(nvl(cams_discard,0)) as discard from cams_discard_all_years cl where 
+odbc load,  exec("select year, extract(month from date_trip) as month, itis_tsn, sum(nvl(cams_discard,0)) as discard from CAMS_GARFO.cams_discard_all_years cl where 
 		cl.area between 511 and 515 and 
 		year between $commercial_grab_start and $commercial_grab_end and
 		itis_tsn in (164712,164744)
@@ -109,14 +123,14 @@ forvalues yr=$commercial_grab_start(1)$commercial_grab_end {;
 ### All permits that landed summer flounder in 2014
 ```
 SELECT distinct PERMIT
-  from cams_land where 
+  from CAMS_GARFO.cams_land where 
   ITIS_TSN=172735 and YEAR in ('2014')
 ```
 
 ### Subtrip level info for permits that landed summer flounder in 2014
 
 ```
-select * FROM cams_subtrip s 
+select * FROM CAMS_GARFO.cams_subtrip s 
     where s.YEAR in ('2014') and s.PERMIT in (SELECT distinct PERMIT
     from cams_garfo.cams_land where 
     ITIS_TSN=172735 and YEAR in ('2014'));
@@ -130,10 +144,10 @@ This query adds landings level information for those subtrips, retains just some
 
 ```
 SELECT t.CAMSID, t.DOCID, t.VTRSERNO, t.PERMIT, t.ITIS_TSN, t.DLRID, t.DLR_DATE, t.STATE, t.PORT, t.DLR_MKT, t.DLR_GRADE, t.LNDLB, t.VALUE, t.NEGEAR, t.WEEK, s.VTR_CREW, s.RECORD_SAIL, s.RECORD_LAND, s.VTR_TRIPCATG, s.subtrip, s.YEAR 
-  FROM cams_land t
+  FROM CAMS_GARFO.cams_land t
 LEFT OUTER JOIN 
     (select CAMSID, VTR_CREW, RECORD_SAIL, RECORD_LAND,
-    VTR_TRIPCATG, SUBTRIP, YEAR, permit FROM cams_subtrip) s 
+    VTR_TRIPCATG, SUBTRIP, YEAR, permit FROM CAMS_GARFO.cams_subtrip) s 
     on t.SUBTRIP=s.SUBTRIP AND
     t.CAMSID=s.CAMSID
     where t.YEAR in ('2014') and 
