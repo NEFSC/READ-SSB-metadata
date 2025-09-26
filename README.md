@@ -44,20 +44,6 @@ select * from permit_vps_owner
 
 The second may work or it may fail. If there are multiple tables with the same name (in different schema),  it may fail invisibly.
 
-However, an exception is the CAMS data, which uses transportable table spaces.  For CAMS schema, and any other tables that use TTS, you will want to use the public synonym for speed
-
-```
-select * from CAMS_LAND
-```
-
-will be much faster than 
-
-```
-select * from CAMS_GARFO.CAMS_LAND
-```
-
-
-
 1.  You may find it useful to extract the comments for the columns. Here is some sample code to do that for the CAMS_LAND table in CAMS_GARFO.
 
 ```  
