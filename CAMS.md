@@ -36,10 +36,8 @@ See the [README](https://github.com/NEFSC/READ-SSB-Lee-metadata/) for a note abo
 
 # General Caveats.
 
-* CAMS is is updated on 
-
-Sunday: 4-5 pm
-Wednesday: 8-9 pm
+* CAMS is is updated on Sunday at 4-5pm and on Wednesday at 8-9 pm.
+* 
 The CAMS process still uses a truncate-and-fill approach with the tables. Unfortunately, that means the tables are empty for a period of time during each update. So, either, don't pull data at this time. Or check to make sure you have the expected results. Leave some slack on the back end, as tables are re-indexed after the insert.
 
 
