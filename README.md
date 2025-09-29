@@ -23,6 +23,7 @@ This has consequences for reproducibility if you do not store a copy of the data
 1.  Make sure the table that you're using is not "stale."  Some of the data is stored at GARFO and periodically copied from GARFO to NEFSC servers. Sometimes, they stop getting copied. Sometimes they are updated monthly. One way to check this is to get the maximum DE, DC, or some other date field.
 
 1. Exploring the databases using SQLDeveloper is a good way to build some intuition
+    +  ITD maintains [a guide to SQL developer connections](https://docs.google.com/document/d/1O4NOQkoyGGP4kJIeyGeo7uYMSnH8Ti56/edit#heading=h.ty1rm6agbyf4)
     +  In the Connections tab, connect to Sole
     +  Expand the "Other Users" tab.
     +  Expand a schema, like "CFDBS" and explore  "Tables," "Views," and "Materialized Views" corresponding to that schema.  If they are empty, it may mean that you do not have permissions to view any of those tables.
