@@ -5,15 +5,13 @@ Location: NEFSC_USERS
 
 Schema: CAMS_GARFO
 
-Metadata can be found here:
+Metadata can be found in these two places
 
 https://www.greateratlantic.fisheries.noaa.gov/ro/fso/reports/cams/index.html
 
-and here
+https://www.greateratlantic.fisheries.noaa.gov/ro/fso/reports/cams/cams_documentation/
 
-http://nerswind/cams/cams_documentation/index.html
-
-To get access, ask for it in the [CAMS Jira board](https://apps-st.fisheries.noaa.gov/jira/projects/CAMSNR/issues/CAMSNR-764?filter=allopenissues)
+There is also a [CAMS Jira board](https://apps-st.fisheries.noaa.gov/jira/projects/CAMSNR/issues/CAMSNR-764?filter=allopenissues), where you can look at any updates and issues.
 # Current Collection Methods
 
 # Changes to Collections Methods
@@ -37,6 +35,13 @@ select * from CAMS_GARFO.CAMS_LAND
 See the [README](https://github.com/NEFSC/READ-SSB-Lee-metadata/) for a note about CAMS and Transportable Table Spaces (TTS).
 
 # General Caveats.
+
+* CAMS is is updated on 
+
+Sunday: 4-5 pm
+Wednesday: 8-9 pm
+The CAMS process still uses a truncate-and-fill approach with the tables. Unfortunately, that means the tables are empty for a period of time during each update. So, either, don't pull data at this time. Or check to make sure you have the expected results. Leave some slack on the back end, as tables are re-indexed after the insert.
+
 
 * CAMS currently fills in VALUE=NULL with a zero. This might be a problem if you are calculating average prices by summing the landings and value for all rows.  
   
