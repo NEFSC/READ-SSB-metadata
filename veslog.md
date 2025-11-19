@@ -129,6 +129,13 @@ select count(a.TRIPID) from vtr.veslog2020T a, vtr.veslog2020G b where a.tripid 
     + Technically, only degrees and minutes are required to reported.
     + Some vessels report LORAN readings. These are converted to lat-lon prior to that entire process.
     + This QAQC step is performed differently in the GARFO CATCH, IMAGES, DOCUMENT data.
+    + convert to decimal degrees with
+     ```
+     replace clatmin=0 if clatmin==.
+     replace clatsec=0 if clatset==.
+     lat_dd=clatdeg+clatmin/60+clatsec/3600
+     ```
+     The longitude values need to be multiplied by -1 otherwise, when you plot things, they will show up as ~70East.
 
 * Some dealer numbers (DNUM in VESLOG_S) indicate that catch was not sold to a federally permitted dealer (DNUM<=8 or DNUM=99998)
 * Recreational trips report numbers of fish, not pounds.
