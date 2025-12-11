@@ -7,9 +7,10 @@ Schema: CAMS_GARFO
 
 Metadata can be found in these two places
 
-https://www.greateratlantic.fisheries.noaa.gov/ro/fso/reports/cams/index.html
+https://apps-garfo.fisheries.noaa.gov/cams/index.html
+and 
+https://apps-garfo.fisheries.noaa.gov/cams/cams_documentation
 
-https://www.greateratlantic.fisheries.noaa.gov/ro/fso/reports/cams/cams_documentation/
 
 There is also a [CAMS Jira board](https://apps-st.fisheries.noaa.gov/jira/projects/CAMSNR/issues/CAMSNR-764?filter=allopenissues), where you can look at any updates and issues.
 # Current Collection Methods
