@@ -203,7 +203,7 @@ You should not expect these to match exactly, because ther is different underlyi
 
 # Other Metadata sources
 + INPORT.  https://inport.nmfs.noaa.gov/inport/item/1423
-+ NEFSC's Data Dictionary  http://nova.nefsc.noaa.gov/datadict/
++ NEFSC's Data Dictionary  [http://nova.nefsc.noaa.gov/datadict/](https://internal.nefsc.noaa.gov/datadict/)
 
 + Preceded by: "none"
 + Succeeded by: n/a
