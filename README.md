@@ -1,5 +1,5 @@
 # Social Sciences Branch Metadata
-This repository describes data in the NEFSC databases with a special eye towards fields that are used by social scientists.  It is intended as a supplement to the [data dictionary system](https://nova.nefsc.noaa.gov/datadict/). This repository is mostly oracle focused, but there is information on other data sources too.  Sometimes it contains sample code to extract data.
+This repository describes data in the NEFSC databases with a special eye towards fields that are used by social scientists.  It is intended as a supplement to the [data dictionary system](https://internal.nefsc.noaa.gov/datadict/). This repository is mostly oracle focused, but there is information on other data sources too.  Sometimes it contains sample code to extract data.
 
 Please help make this a valuable up-to-date resource. This repository is public, but writing to the "master" branch is protected. To contribute, you should either:
 
