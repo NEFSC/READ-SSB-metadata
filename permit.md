@@ -51,7 +51,39 @@ select * from NEFSC_GARFO.PERMIT_VPS_VESSEL where (date_issued<>date_canceled or
 
 # Sample Code
 
+ ## A breakdown of the ownership code
+ This is used to associate people (person_id) with permits (vp_num).  We use ap_num to link a permit to a business and business_id to link to people
+
+ ```
+select distinct(b.person_id), c.business_id, a.vp_num, a.ap_year
+	from nefsc_garfo.permit_vps_owner c, nefsc_garfo.client_bus_own b, nefsc_garfo.permit_vps_fishery_ner a
+		where c.ap_num in (select max(ap_num) as ap_num from nefsc_garfo.permit_vps_fishery_ner where ap_year=2024 group by vp_num)
+	 and c.business_id=b.business_id and a.ap_num=c.ap_num;
+```
+
+A breakdown, get the last ap\_num
+```
+/* pull each vessel's last ap_num from the vps_fishery_ner table in 2024 */
+select max(ap_num) as ap_num from nefsc_garfo.permit_vps_fishery_ner where ap_year=2024 group by vp_num;
+```
+
+Get owner info
+```
+/* pull the owner table info. We don't use the name or the corp_name in this table, I believe its because it only gets the 1st owner */
+select * from nefsc_garfo.permit_vps_owner c
+     where c.ap_num in (
+     select max(ap_num) as ap_num from nefsc_garfo.permit_vps_fishery_ner where ap_year=2024 group by vp_num) order by ap_num;
+/* just pull the business_id*/
+select c.business_id from nefsc_garfo.permit_vps_owner c
+     where c.ap_num in (
+     select max(ap_num) as ap_num from nefsc_garfo.permit_vps_fishery_ner where ap_year=2024 group by vp_num) order by ap_num;
+```
+
+
+
 # Sample Projects
+
++ https://github.com/NEFSC/READ-SSB-Lee-RFAdataset uses permit data extensively
 
 # Update Frequency and Completeness
 
