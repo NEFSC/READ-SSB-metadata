@@ -13,6 +13,10 @@ https://apps-garfo.fisheries.noaa.gov/cams/cams_documentation
 
 
 There is also a [CAMS Jira board](https://apps-st.fisheries.noaa.gov/jira/projects/CAMSNR/issues/CAMSNR-764?filter=allopenissues), where you can look at any updates and issues.
+
+There is a [CAMS discard tracker](https://garfo-prod-cams-01-as-shiny.nmfs.local/cams-shiny-dashboard) shiny app, where you can look up how discards and assumed discard rates evolve over time. 
+
+
 # Current Collection Methods
 
 # Changes to Collections Methods
