@@ -99,7 +99,7 @@ select c.business_id from nefsc_garfo.permit_vps_owner c
 + CLIENT.BUS_OWN contains ownership data that is often linked to these PERMIT data. We'll put them in a separate section.
 + MQRS tracks the ability of a *thing* to participate in a moratorium fishery. We'll put them in a separate section.  Allocations are tracked in other places (DAS, DAS2, and AMS).
 + CPH
-+ OPERATORS (captains) are permitted independently 
++ OPERATORS (captains) are permitted independently in JOPS_OPERATOR.
 
 
 
