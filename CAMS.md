@@ -17,6 +17,15 @@ There is also a [CAMS Jira board](https://apps-st.fisheries.noaa.gov/jira/projec
 There is a [CAMS discard tracker](https://garfo-prod-cams-01-as-shiny.nmfs.local/cams-shiny-dashboard) shiny app, where you can look up how discards and assumed discard rates evolve over time. 
 
 
+# Related Tables 
+
+# Support Tables 
+See the CAMS documentation.  Many CAMS support tables are preceeded by CFG_. For some fields, you must look at the 'source' support tables. 
++ trip_reports.disposition - disposition codes
++ trip_reports_species_market_grade_unit_of_measures market and grade codes
+
+
+
 # Current Collection Methods
 
 # Changes to Collections Methods
@@ -189,8 +198,4 @@ The variable ``PERMIT_STATE_FED`` in the CAMS_LAND table indicates whether landi
 
 + Preceded by: DMIS, CFDERS _AA
 + Succeeded by: n/a
-
-# Related Tables 
-
-# Support Tables 
 
