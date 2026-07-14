@@ -158,7 +158,8 @@ If you need to extract many years of CFBDB data, do it in a loop.
 + GEAR
 + SPECIES_ITIS_NE  decodes into names, links to the species_itis system
 + CFSPP - decodes NESPP3 and NESPP4 into names
-
++ trip_reports.disposition - disposition codes
++ trip_reports_species_market_grade_unit_of_measures market and grade codes
 
 # Cool Stuff
 
