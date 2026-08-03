@@ -225,6 +225,7 @@ select d.*, i.*, c.*
 + VLSPPTBL decodes SPPCODES into names and NESPP4 codes. So does VLSPPSYN_94_95, which looks deprecated.    
 + TENMINSQ, LOC,LOC2AREAS
 + PORTSYN, VLPORTSYN
+	+ PORTSYN is used to match misspelled port names to "fixed" ones	
 + VLGEAR - decodes gear codes into english
 
 
