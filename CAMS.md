@@ -146,6 +146,9 @@ SELECT distinct PERMIT
   from CAMS_GARFO.cams_land where 
   ITIS_TSN=172735 and YEAR in ('2014')
 ```
+Note, this code will result in federal permits that were ever assigned (federal + potentially non-federally active vessels) + permit number = "000000" and unknown permits (190998=Unknown undertonnage vessel; 390998=Unknown tonnage vessel. 490998=Unknown) counted as single permits. 
+
+
 
 ### Subtrip level info for permits that landed summer flounder in 2014
 
@@ -183,7 +186,11 @@ You may want to filter out the PERMIT=000000, add discards, or add VTR orphans d
 
 Note that the above query (Catch level info for those trips) will only capture activity that occurs by vessels with a federal permit at the time the trip was taken.  Vessel owners may not always renew all of their federal permits at the begininng of the year.   If interested in total catches at the vessel-level, hullid should be used rather than permit. Trips by vessels without a federal permit will have ``PERMIT=000000``.  Many Council managed species have minor state landings, however there are exceptions (e.g. summer flounder, scup, black sea bass).
 
-The variable ``PERMIT_STATE_FED`` in the CAMS_LAND table indicates whether landings are associated with state (PERMIT=000000) or federal fishing activity. Unknown vessels (``PERMIT=190998, 390998, 490998``) are classified as Federal  in the construction of ``PERMIT_STATE_FED''
+The variable ``PERMIT_STATE_FED`` in the CAMS_LAND table indicates whether landings are associated with state (PERMIT=000000) or federal fishing activity. HOWEVER, dealers are requested to provide a permit number if the vessel EVER had been assigned a federal permit number. This means that a vessel no longer have a Federal permit and is fishing in state waters but would be recorded as a federal permit (Source, Dan Hocking). 
+To get at state landings you should use: cams_garfo.match_vpsplan — What permits were held at the time of landing on the trip. 
+
+
+Unknown vessels (``PERMIT=190998, 390998, 490998``) are classified as Federal  in the construction of ``PERMIT_STATE_FED''
 
 ### Classifying Limited Access, General Category and Access Area trips 
 
