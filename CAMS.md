@@ -146,6 +146,12 @@ SELECT distinct PERMIT
   from CAMS_GARFO.cams_land where 
   ITIS_TSN=172735 and YEAR in ('2014')
 ```
+Note, this sql query include the following:
+- federal permits that were ever assigned (federal + potentially non-federally active vessels)
+- permit number = "000000" 
+- unknown permits (190998=Unknown undertonnage vessel; 390998=Unknown tonnage vessel; 490998=Unknown) . 
+
+
 
 ### Subtrip level info for permits that landed summer flounder in 2014
 
@@ -183,7 +189,40 @@ You may want to filter out the PERMIT=000000, add discards, or add VTR orphans d
 
 Note that the above query (Catch level info for those trips) will only capture activity that occurs by vessels with a federal permit at the time the trip was taken.  Vessel owners may not always renew all of their federal permits at the begininng of the year.   If interested in total catches at the vessel-level, hullid should be used rather than permit. Trips by vessels without a federal permit will have ``PERMIT=000000``.  Many Council managed species have minor state landings, however there are exceptions (e.g. summer flounder, scup, black sea bass).
 
-The variable ``PERMIT_STATE_FED`` in the CAMS_LAND table indicates whether landings are associated with state (PERMIT=000000) or federal fishing activity. Unknown vessels (``PERMIT=190998, 390998, 490998``) are classified as Federal  in the construction of ``PERMIT_STATE_FED''
+The variable ``PERMIT_STATE_FED`` in the CAMS_LAND table indicates whether landings are associated with state (PERMIT=000000) or federal fishing activity. ``PERMIT_STATE_FED`` is slated for retirement.  
+
+Dealers are required to provide a permit number if the vessel EVER had been assigned a federal permit number. Therefore, trips in state waters taken by a vessel that formerly held a federal permit should have PERMIT  != '000000'. (Source, Dan Hocking). 
+
+However, we have observed instances in CAMS_LAND where a vessel has landings with and without a valid federal PERMIT, which contradicts the above. 
+
+```
+# Here is some Oracle SQL that imperfectly illustrates this phenomenon:
+WITH grouped_data AS (
+    SELECT 
+        permit, 
+        hullid, 
+        year, 
+        permit_state_fed, 
+        COUNT(*) AS count,
+        COUNT(*) OVER (PARTITION BY hullid, year) AS hull_year_freq
+    FROM cams_garfo.cams_land 
+    WHERE year >= 2010 
+    GROUP BY permit, year, hullid, permit_state_fed
+)
+SELECT 
+    permit, 
+    hullid, 
+    year, 
+    permit_state_fed, 
+    count
+FROM grouped_data
+WHERE hull_year_freq >= 2
+ORDER BY hullid, permit, year, permit_state_fed;
+```
+To get at state landings you should use: cams_garfo.match_vpsplan — What permits were held at the time of landing on the trip. 
+
+
+Unknown vessels (``PERMIT=190998, 390998, 490998``) are classified as Federal  in the construction of ``PERMIT_STATE_FED''
 
 ### Classifying Limited Access, General Category and Access Area trips 
 
