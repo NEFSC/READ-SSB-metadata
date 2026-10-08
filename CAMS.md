@@ -195,8 +195,8 @@ Dealers are required to provide a permit number if the vessel EVER had been assi
 
 However, we have observed instances in CAMS_LAND where a vessel has landings with and without a valid federal PERMIT, which contradicts the above. 
 
-Here is some Oracle SQL that imperfectly illustrates:
-
+```
+# Here is some Oracle SQL that imperfectly illustrates this phenomenon:
 WITH grouped_data AS (
     SELECT 
         permit, 
@@ -218,6 +218,7 @@ SELECT
 FROM grouped_data
 WHERE hull_year_freq >= 2
 ORDER BY hullid, permit, year, permit_state_fed;
+```
 To get at state landings you should use: cams_garfo.match_vpsplan — What permits were held at the time of landing on the trip. 
 
 
