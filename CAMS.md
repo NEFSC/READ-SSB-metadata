@@ -146,7 +146,10 @@ SELECT distinct PERMIT
   from CAMS_GARFO.cams_land where 
   ITIS_TSN=172735 and YEAR in ('2014')
 ```
-Note, this code will result in federal permits that were ever assigned (federal + potentially non-federally active vessels) + permit number = "000000" and unknown permits (190998=Unknown undertonnage vessel; 390998=Unknown tonnage vessel. 490998=Unknown) counted as single permits. 
+Note, this sql query include the following:
+- federal permits that were ever assigned (federal + potentially non-federally active vessels)
+- permit number = "000000" 
+- unknown permits (190998=Unknown undertonnage vessel; 390998=Unknown tonnage vessel; 490998=Unknown) . 
 
 
 
