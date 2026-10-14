@@ -29,7 +29,7 @@ See the [README](https://github.com/NEFSC/READ-SSB-Lee-metadata/) for a note abo
 ```
 select distinct cf.cfders_id, cf.dealer_rpt_id, cf.day, cf.year, cf.month, cla.date_trip, cla.dlr_date, cla.camsid, cla.status from nefsc_garfo.cfders_all_years cf 
     LEFT JOIN (
-    select distinct  cl.camsid, cl.year, cl.month, cl.dlr_rptid, cl.dlr_date, cl.date_trip, cl.status from cams_land cl where cl.year>=2005 and cl.dlr_rptid is not null) cla
+    select distinct  cl.camsid, cl.year, cl.month, cl.dlr_rptid, cl.dlr_date, cl.date_trip, cl.status from cams_garfo.cams_land cl where cl.year>=2005 and cl.dlr_rptid is not null) cla
 on cf.dealer_rpt_id=  cla.dlr_rptid and cf.month=cla.month and cf.year=cla.year
     where cf.day=0 and 
     cf.year>=2005 and 
@@ -37,7 +37,7 @@ on cf.dealer_rpt_id=  cla.dlr_rptid and cf.month=cla.month and cf.year=cla.year
 ```
 And this join illustrates the second:
 ```
-select * from cams_land where dlr_docn in (
+select * from cams_garfo.cams_land where dlr_docn in (
 select distinct docn from nefsc_garfo.cfders_all_years where month=0 and year>=2008);
 select * from nefsc_garfo.cfders_all_years where docn='WHSE_AG_190';
 ```
