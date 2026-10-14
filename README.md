@@ -69,6 +69,8 @@ select table_name, column_name, comments from all_col_comments where owner='CAMS
 
 [DMIS](DMIS.md): Data Matching and Imputation System
 
+[MRIP](MRIP.md): Marine Recreational information Program data
+
 [MQRS](MQRS.md) : Moratorium Qualification something System
 
 [observer](observer.md): Fishery Observers
