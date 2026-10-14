@@ -12,6 +12,8 @@ See the instructions in the [How to help](https://github.com/NEFSC/READ-SSB-Lee-
 
 1. Most data are stored in **Oracle databases**, which are located on the "NEFSC_USERS" **servers**.  "Nova" was shut down in 2022 and replaced with NEFSC_USERS on NEFSCDB1. Sole was shut down in January, 2024.
 
+1. By the end of 2026, all of our data will be moved to the cloud.  Your life will be much easier if you do your analysis in the cloud, otherwise you'll have to deal with bandwidth issues related to getting data from the cloud to your local machine.
+
 1. There are various **schema**. Schema are collections of related tables.
 
 1. Quality Assurance and Quality Control (QA/QC) is often needed as the data are imperfect. 
