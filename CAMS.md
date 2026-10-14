@@ -24,7 +24,7 @@ See the [README](https://github.com/NEFSC/READ-SSB-Lee-metadata/) for a note abo
 
 # General Caveats
 
-+ CAMS_LAND will cast day=0 to day=1 in order to create a valid date column.  It will also cast month=0 to month=12. This join, which does is *not* the best way to put cfders_all_years and cams_land together, illustrates the first. 
++ CAMS_LAND will cast day=0 to day=1 in order to create a valid date column.  It will also cast month=0 to month=12. This join, which does is *not* the best way to put cfders_all_years and cams_land together, illustrates the first. CAMS group is expecting to address this by carrying CFDERSID through to CAMS_LAND to be able to connect back to original CFDERS records (https://apps-st.fisheries.noaa.gov/jira/browse/CAMSNR-1093). 
 
 ```
 select distinct cf.cfders_id, cf.dealer_rpt_id, cf.day, cf.year, cf.month, cla.date_trip, cla.dlr_date, cla.camsid, cla.status from nefsc_garfo.cfders_all_years cf 
