@@ -48,7 +48,25 @@ select * from CAMS_GARFO.CAMS_LAND
 
 See the [README](https://github.com/NEFSC/READ-SSB-Lee-metadata/) for a note about CAMS and Transportable Table Spaces (TTS).
 
-# General Caveats.
+# General Caveats
+
++ CAMS_LAND will cast day=0 to day=1 in order to create a valid date column.  It will also cast month=0 to month=12. This join, which does is *not* the best way to put cfders_all_years and cams_land together, illustrates the first. CAMS group is expecting to address this by carrying CFDERSID through to CAMS_LAND to be able to connect back to original CFDERS records (https://apps-st.fisheries.noaa.gov/jira/browse/CAMSNR-1093). 
+
+```
+select distinct cf.cfders_id, cf.dealer_rpt_id, cf.day, cf.year, cf.month, cla.date_trip, cla.dlr_date, cla.camsid, cla.status from nefsc_garfo.cfders_all_years cf 
+    LEFT JOIN (
+    select distinct  cl.camsid, cl.year, cl.month, cl.dlr_rptid, cl.dlr_date, cl.date_trip, cl.status from cams_garfo.cams_land cl where cl.year>=2005 and cl.dlr_rptid is not null) cla
+on cf.dealer_rpt_id=  cla.dlr_rptid and cf.month=cla.month and cf.year=cla.year
+    where cf.day=0 and 
+    cf.year>=2005 and 
+    cf.dealer_rpt_id is not null;
+```
+And this join illustrates the second:
+```
+select * from cams_garfo.cams_land where dlr_docn in (
+select distinct docn from nefsc_garfo.cfders_all_years where month=0 and year>=2008);
+select * from nefsc_garfo.cfders_all_years where docn='WHSE_AG_190';
+```
 
 * The CAMSID is not guaranteed to be consistent across CAMS model runs.
 	* If none of the data change the same trip will will get the same CAMSID.
