@@ -1,5 +1,5 @@
 
-*SSB Metrics Catlog*
+*SSB Metrics Catalog*
 Link: file:///C:/Users/samantha.l.werner/Desktop/Github/READ-SSB-SSB_METRICS_CATALOG/docs/index.html
 
 Purpose: A comprehensive catalog of all metrics produced by SSB that are currently, indented to be or could be used by others within the NEFSC, council staff, academic partners or other stakeholders. This can help end users identify which metrics SSB produces, their level of observation and compare and contrast across metrics produced to facilitate selecting and socioeconomic metrics in end products. This effort aims to decrease redundancy and improve clarity on SSB produced metrics and the methods used to develop them. 
